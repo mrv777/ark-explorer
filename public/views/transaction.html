@@ -75,6 +75,11 @@
             <td class="text-right">{{tx.timestamp | timestamp}}</td>
           </tr>
           <tr>
+            <td><strong>Vendor field </strong></td>
+            <td data-ng-if="tx.vendorField" class="text-right">{{tx.vendorField}}</a></td>
+            <td data-ng-if="!tx.vendorField" class="text-right">N/A</td>
+          </tr>
+          <tr>
             <td><strong>Block </strong></td>
             <td data-ng-if="tx.blockId" class="text-right">
               <a href="/block/{{tx.blockId}}">{{tx.blockId}}</a>

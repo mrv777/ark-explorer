@@ -1,5 +1,8 @@
 <td data-title="Transaction ID" class="text-nowrap">
-	<a class="txid ellipsis tx-id-list" href="/tx/{{tx.id}}">{{tx.id}}</a>
+  <a data-ng-if="tx.vendorField" class="txid ellipsis tx-id-list" href="/tx/{{tx.id}}">
+    <span class="glyphicon glyphicon-tag" title="{{tx.vendorField}}"></span> {{tx.id}}
+  </a>
+  <a data-ng-if="!tx.vendorField" class="txid ellipsis tx-id-list" href="/tx/{{tx.id}}">{{tx.id}}</a>
 </td>
 <td data-title="Date">{{tx.timestamp | timestamp }}</td>
 <td data-title="Sender"><a class="ellipsis address-list" href="/address/{{tx.senderId}}">{{tx | txSender}}</a></td>

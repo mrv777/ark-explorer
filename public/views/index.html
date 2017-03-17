@@ -23,7 +23,12 @@
           <tbody>
           <tr data-ng-if="!txs.length"><td colspan="6">Waiting for transactions...</td></tr>
           <tr data-ng-repeat='tx in txs track by $index'>
-            <td><a class="ellipsis tx-id-list" href="/tx/{{tx.id}}">{{tx.id}}</a></td>
+            <td>
+              <a data-ng-if="tx.vendorField" class="ellipsis tx-id-list" href="/tx/{{tx.id}}">
+                <span class="glyphicon glyphicon-tag" title="{{tx.vendorField}}"></span> {{tx.id}}
+              </a>
+              <a data-ng-if="!tx.vendorField" class="ellipsis tx-id-list" href="/tx/{{tx.id}}">{{tx.id}}</a>
+            </td>
             <td class="text-right hidden-xs"><span class="ellipsis">{{tx.timestamp | timestamp}}<span></td>
             <td class="text-right hidden-xs"><a class="address-list ellipsis pull-right" href="/address/{{tx.senderId}}">{{tx | txSender}}</a></td>
             <td class="text-right hidden-xs">
