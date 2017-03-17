@@ -106,3 +106,7 @@
 .tooltip-red.left .tooltip-arrow {
   border-left-color:  #d32f2f;
 }
+
+.dm-address, .dm-tx-id {
+  max-width: 210px;
+}

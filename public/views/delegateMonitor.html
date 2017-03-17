@@ -165,10 +165,10 @@
                     <tbody>
                       <tr data-ng-repeat='v in votes track by $index'>
                         <td class="voter">
-                          <a data-ng-href="/address/{{v.senderId}}">{{v.delegate.username || v.senderId}}</a>
+                          <a class="ellipsis dm-address" data-ng-href="/address/{{v.senderId}}">{{v.delegate.username || v.senderId}}</a>
                         </td>
                         <td class="tx hidden-xs">
-                          <a class="ellipsis tx-id-votes" data-ng-href="/tx/{{v.id}}">{{v.id}}</a>
+                          <a class="ellipsis dm-tx-id" data-ng-href="/tx/{{v.id}}">{{v.id}}</a>
                         </td>
                         <td class="time-ago">
                           <span class="text-muted">{{v.timestamp | timeAgo}}</span>
@@ -207,7 +207,7 @@
                           <a data-ng-href="/address/{{r.senderId}}">{{r.delegate.username}}</a>
                         </td>
                         <td class="tx hidden-xs">
-                          <a class="ellipsis tx-id-votes" data-ng-href="/tx/{{r.id}}">{{r.id}}</a>
+                          <a class="ellipsis dm-tx-id" data-ng-href="/tx/{{r.id}}">{{r.id}}</a>
                         </td>
                         <td class="time-ago">
                           <span class="text-muted">{{r.timestamp | timeAgo}}</span>

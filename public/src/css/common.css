@@ -1068,9 +1068,18 @@ a.sort-order span.reverse:after {
   }
 }
 
-.tx-id-list {
-  max-width: 380px;
+.tx-id-list, .address-list {
+  max-width: 245px;
 }
-.tx-id-votes {
-  max-width: 260px;
+
+@media (max-width: 1200px) {
+  .tx-id-list, .address-list {
+    max-width: 180px;
+  }
+}
+
+@media only screen and (max-width: 995px) {
+  .tx-id-list, .address-list {
+    max-width: 100px;
+  }
 }
