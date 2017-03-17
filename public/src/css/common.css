@@ -44,6 +44,7 @@ a, a:visited, a:focus {
 a:hover {
   color: #f57c00;
   text-decoration: none;
+  transition: color 0.3s ease 0s;
 }
 
 /* Bootstrap fix for ui.bootstrap */
@@ -244,12 +245,15 @@ a:hover {
     margin-bottom: 1px;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a {
-    background-color: #080808;
-    color: white;
+    background-color: white;
+    color: #080808;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
-    background-color: #be9c77;
+    background-color: #27292A;
     color: white;
+  }
+  .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse, .pre-scrollable {
+    max-height: none;
   }
 }
 
@@ -279,12 +283,12 @@ a:hover {
 .nav-tabs.nav-justified>.active>a,
 .nav-tabs.nav-justified>.active>a:focus {
   color: white;
-  background-color: #0299eb;
+  background-color: #2F3336;
 }
 
 .nav-tabs.nav-justified>.active>a:hover {
   color: white;
-  background-color: #0288d1;
+  background-color: #27292A;
 }
 
 .nav-tabs.nav-justified>li>a:hover {
@@ -330,7 +334,10 @@ a:hover {
 
 #search-form { color: #5f696e; }
 
-#search-form #search { width: 275px; }
+#search-form #search { 
+  width: 275px;
+  line-height: normal;
+}
 
 #search { font-family: 'Roboto', 'Ubuntu', sans-serif; }
 
@@ -570,13 +577,7 @@ a:hover {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
-}
-
-@media (max-width: 768px) {
-  .txvalues {
-    display: block;
-    margin: 5px;
-  }
+  display: block;
 }
 
 .txvalues-primary {
@@ -717,6 +718,11 @@ a:hover {
     word-wrap: break-word;
     overflow-wrap: break-word;
     width: 100%;
+}
+
+.pk-mobile-style {
+    border: 1px solid #D3D3D3;
+    padding: 7px;
 }
 
 /* Animations */

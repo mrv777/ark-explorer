@@ -1,7 +1,7 @@
 'use strict';
 
 var api = require('../lib/api'),
-    config = require('../config.json'),
+    config = require('../config'),
     async = require('async');
 
 module.exports = function (app, connectionHandler, socket) {
