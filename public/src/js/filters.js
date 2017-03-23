@@ -1,5 +1,9 @@
 'use strict';
 
+function smallId(fullId) {
+  return fullId.slice(0, 5) + '...' + fullId.slice(-5)
+}
+
 angular.module('lisk_explorer')
   .filter('approval', function () {
       return function (votes) {
@@ -163,20 +167,35 @@ angular.module('lisk_explorer')
           return d.getFullYear() + '/' + month + '/' + day + ' ' + h + ':' + m + ':' + s;
       };
   })
-  .filter('txSender', function () {
-      return function (tx) {
-          return ((tx.senderDelegate && tx.senderDelegate.username) || tx.senderUsername || (tx.knownSender && tx.knownSender.owner) || tx.senderId);
-      };
-  })
-  .filter('txRecipient', function (txTypes) {
-      return function (tx) {
-          if (tx.type === 0) {
-              return ((tx.recipientDelegate && tx.recipientDelegate.username) || tx.recipientUsername || (tx.knownRecipient && tx.knownRecipient.owner) || tx.recipientId);
-          } else {
-              return (txTypes[parseInt(tx.type)]);
-          }
-      };
-  })
+    .filter('smallId', function () {
+        return function (fullId) {
+            return smallId(fullId)
+        };
+    })
+    .filter('txSender', function (txTypes) {
+        return function (tx) {
+            if (tx.senderDelegate && tx.senderDelegate.username)
+                return tx.senderDelegate.username
+            if (tx.senderUsername)
+                return tx.senderUsername
+            if (tx.knownSender && tx.knownSender.owner)
+                return tx.knownSender.owner
+
+            return smallId(tx.senderId)
+        };
+    })
+    .filter('txRecipient', function (txTypes) {
+        return function (tx) {
+            if (tx.recipientDelegate && tx.recipientDelegate.username)
+                return tx.senderDelegate.username
+            if (tx.recipientUsername)
+                return tx.recipientUsername
+            if (tx.knownRecipient && tx.knownRecipient.owner)
+                return tx.knownRecipient.owner
+
+            return smallId(tx.recipientId)
+        };
+    })
   .filter('txType', function (txTypes) {
       return function (tx) {
           return txTypes[parseInt(tx.type)];
