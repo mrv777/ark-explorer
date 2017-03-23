@@ -187,7 +187,7 @@ angular.module('lisk_explorer')
     .filter('txRecipient', function (txTypes) {
         return function (tx) {
             if (tx.recipientDelegate && tx.recipientDelegate.username)
-                return tx.senderDelegate.username
+                return tx.recipientDelegate.username
             if (tx.recipientUsername)
                 return tx.recipientUsername
             if (tx.knownRecipient && tx.knownRecipient.owner)
