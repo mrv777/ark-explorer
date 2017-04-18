@@ -15,6 +15,10 @@
     width: 49%;
 }
 
+div.tooltip-inner {
+    max-width: 500px;
+}
+
 .tab-content {
   /*padding-top: 50px;*/
 }

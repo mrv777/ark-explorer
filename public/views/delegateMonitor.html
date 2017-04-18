@@ -168,7 +168,7 @@
                           <a class="ellipsis dm-address" data-ng-href="/address/{{v.senderId}}">{{v.delegate.username || (v.senderId | smallId)}}</a>
                         </td>
                         <td class="tx hidden-xs">
-                          <a class="ellipsis dm-tx-id" data-ng-href="/tx/{{v.id}}">{{v.id | smallId}}</a>
+                          <a tooltip="{{v.asset.votes[0]}}" class="ellipsis dm-tx-id" data-ng-href="/tx/{{v.id}}">{{v.id | smallId}}</a>
                         </td>
                         <td class="time-ago">
                           <span class="text-muted">{{v.timestamp | timeAgo}}</span>
