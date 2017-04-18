@@ -1,12 +1,12 @@
-# Lisk Blockchain Explorer
+# Ark Blockchain Explorer
 
-Lisk Explorer version 1.1.0 works in conjunction with the Lisk Core API. It uses Redis for caching data and Freegeoip to parse IP geo-location data.
+Ark Explorer version 0.2 works in conjunction with the Ark Core API. It uses Redis for caching data and Freegeoip to parse IP geo-location data.
 
-[![Build Status](https://travis-ci.org/LiskHQ/lisk-explorer.svg?branch=development)](https://travis-ci.org/LiskHQ/lisk-explorer)
+[![Build Status](https://travis-ci.org/ArkEcosystem/Ark-explorer.svg?branch=development)](https://travis-ci.org/ArkEcosystem/Ark-explorer)
 
 ## Prerequisites
 
-These programs and resources are required to install and run Lisk Explorer
+These programs and resources are required to install and run Ark Explorer
 
 - Nodejs v6.9.2 or higher (<https://nodejs.org/>) -- Nodejs serves as the underlying engine for code execution.
 
@@ -36,11 +36,11 @@ These programs and resources are required to install and run Lisk Explorer
 
   `sudo npm install -g grunt`
 
-- Forever (<https://github.com/foreverjs/forever>) -- Forever manages the node processes for Lisk Explorer
+- Forever (<https://github.com/foreverjs/forever>) -- Forever manages the node processes for Ark Explorer
 
   `sudo npm install -g forever`
 
-- Git (<https://github.com/git/git>) -- Used for cloning and updating Lisk Explorer
+- Git (<https://github.com/git/git>) -- Used for cloning and updating Ark Explorer
 
   `sudo apt-get install -y git`
 
@@ -50,11 +50,11 @@ These programs and resources are required to install and run Lisk Explorer
 
 ## Installation Steps
 
-Clone the Lisk Explorer Repository:
+Clone the Ark Explorer Repository:
 
 ```
-git clone https://github.com/LiskHQ/lisk-explorer.git
-cd lisk-explorer
+git clone https://github.com/ArkEcosystem/ark-explorer.git
+cd ark-explorer
 npm install
 bower install
 ```
@@ -62,12 +62,12 @@ bower install
 ## Build Steps
 
 #### Frontend
- The frontend must be built with Grunt before starting Lisk Explorer. Run the following command to compile the frontend components:
+ The frontend must be built with Grunt before starting Ark Explorer. Run the following command to compile the frontend components:
 
 `grunt compile`
 
 #### Market Watcher
- Candlestick data needs to be initialized prior to starting Lisk Explorer. During runtime candlestick data is updated automatically.
+ Candlestick data needs to be initialized prior to starting Ark Explorer. During runtime candlestick data is updated automatically.
 
 To build candlestick data for each exchange run:
 
@@ -79,32 +79,19 @@ To update candlestick data manually run after initialization:
 
 ## Configuration
 
-The default `config.js` file contains all of the configuration settings for Lisk Explorer. These options can be modified according to comments included in configuration file.
+The default `config.js` file contains all of the configuration settings for Ark Explorer. These options can be modified according to comments included in configuration file.
 
 #### Top Accounts
 
-To enable Top Accounts functionality, edit your Lisk Client config.json _(not the explorer)_:
+To enable Top Accounts functionality, start your ark node (not the explorer) using the following command:
 
 ```
-{
-    "port": 8000,
-    "address": "0.0.0.0",
-    "version": "0.5.0",
-    "minVersion": "~0.5.0",
-    "fileLogLevel": "info",
-    "logFileName": "logs/lisk.log",
-    "consoleLogLevel": "info",
-    "trustProxy": false,
-    "topAccounts": false, <--- This line needs to be changed to read true
+TOP=true node app.js
 ```
 
-After the change is made the Lisk Client will need to be restarted. (Example):
+## Managing Ark Explorer
 
-`bash /PATH_TO_LISK_DIR/lisk.sh reload`
-
-## Managing Lisk Explorer
-
-To test that Lisk Explorer is configured correctly, run the following command:
+To test that Ark Explorer is configured correctly, run the following command:
 
 `node app.js`
 
@@ -124,21 +111,21 @@ To stop Explorer after it has been started with `forever`, issue the following c
 
 ## Tests
 
-Before running any tests, please ensure Lisk Explorer and Lisk Client are configured to run on the Lisk Testnet.
+Before running any tests, please ensure Ark Explorer and Ark Client are configured to run on the Ark Testnet.
 
 Replace **config.js** with **config.test** file from the **test** directory:
 
 `cp test/config.test ./config.js`
 
-Replace the **config.json** for the Lisk Client the corresponding file under the **test** directory:
+Replace the **config.json** for the Ark Client the corresponding file under the **test** directory:
 
-`cp test/config_lisk.json  /PATH_TO_LISK_DIR/config.json`
+`cp test/config_Ark.json  /PATH_TO_Ark_DIR/config.json`
 
-Then restart the Lisk Client (example):
+Then restart the Ark Client (example):
 
-`bash /PATH_TO_LISK_DIR/lisk.sh reload`
+`bash /PATH_TO_Ark_DIR/Ark.sh reload`
 
-Launch Lisk Explorer (runs on port 6040):
+Launch Ark Explorer (runs on port 6040):
 
 `forever start app.js`
 
@@ -153,11 +140,19 @@ npm test -- test/api/accounts.js
 npm test -- test/api/transactions.js
 ```
 
+## Authors
+- Guillaume Verbal <doweig@ark.io>
+- 4miners MQ
+- Isabella Dell <isabella@lisk.io>
+- Oliver Beddows <oliver@lisk.io>
+- Boris Povod <boris@crypti.me>
+
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2016-2017 Lisk<br>
+Copyright (c) 2016 Ark
+Copyright (c) 2016 Lisk
 Copyright (c) 2015 Crypti
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
