@@ -79,7 +79,7 @@ data-ng-if="address.balance" data-ng-init="hideSNavbar=0">
                 </tr>
                 <tr>
                   <td><strong>Approval</strong></td>
-                  <td class="text-right">{{address.delegate.approval}}% ({{address.delegate.vote | currency:currency}} <span class="text-muted">{{currency.symbol}}</span>)</td>
+                  <td class="text-right"><span tooltip="{{address.delegate.vote | currency:currency}} {{currency.symbol}}">{{address.delegate.approval}}%</span></td>
                 </tr>
                 <tr>
                   <td><strong>Forged</strong></td>
