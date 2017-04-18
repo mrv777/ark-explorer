@@ -82,10 +82,21 @@ module.exports = function (config) {
         'ARKCNY' : {
             'jubi' : [
                 'Jubi',
-                'https://www.jubi.com/api/v1/ticker/ARK',
+                'https://www.jubi.com/api/v1/ticker/?coin=ark',
                 function (res, cb) {
                     if (res.last) {
                         return cb(null, res.last);
+                    } else {
+                        return cb('Unable to get last price');
+                    }
+                }
+            ],
+            'bitbays' : [
+                'Bitbays',
+                'https://bitbays.com/api/v1/ticker/?market=ark_cny',
+                function (res, cb) {
+                    if (res.status === 200 && res.message === 'ok' && res.result.last) {
+                        return cb(null, res.result.last);
                     } else {
                         return cb('Unable to get last price');
                     }
@@ -97,6 +108,9 @@ module.exports = function (config) {
     _.each(config.exchangeRates.exchanges, function (coin1, key1) {
         _.each(coin1, function (exchange, key2) {
             var pair = key1 + key2;
+            if (!exchange) {
+                return;
+            }
             if (exchanges[pair].hasOwnProperty (exchange)) {
                 console.log('Exchange:', util.format('Configured [%s] as %s/%s exchange', exchange, key1, key2));
                 config.exchangeRates.exchanges[key1][key2] = exchanges[pair][exchange];
