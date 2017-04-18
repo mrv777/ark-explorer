@@ -11,9 +11,12 @@
   color: #2F3336;
   background-color: white;
 }
+.nav-pills>li {
+    width: 49%;
+}
 
 .tab-content {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
 }
 
 .big-details span.total-delegates {
